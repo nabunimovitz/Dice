@@ -1,27 +1,24 @@
-//Die one;
-//Die two;
-
 void setup()
 {
 	size(350,350);
 	noLoop();
 }
+
+int value;
+
 void draw()
 {
 	background(255,255,102);
-	for(int x=50; x<300; x+=100)
+	for(int y =50; y<300; y+=100)
 	{
-		Die one = new Die(x,50);
+		for(int x=50; x<300; x+=100)
+		{
+		Die one = new Die(x,y);
 		one.show();
+		}
 	}
-	
-	
-	/*one = new Die(50,50);
-	one.show();
-
-	two = new Die(150,50);
-	two.show();*/
 }
+
 void mousePressed()
 {
 	redraw();
@@ -29,7 +26,8 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	
-	int myX, myY, value;
+	int myX, myY, value, sum;
+	sum=0;
 
 	Die(int x, int y) //constructor
 	{
@@ -52,14 +50,15 @@ class Die //models one single dice cube
 		else 
 			value = 6;
 
-		//if(Math.random()<1)
-			//value=1;
-
-		//System.out.println("value =" + value);
+		/*sum = sum+value;
+		System.out.println("sum =")*/
+			
+		System.out.println("value =" + value);
 
 	}
 	void show()
 	{
+		noStroke();
 		fill(135, 206,250);
 		rect(myX,myY,50,50);
 		fill(0);
@@ -100,5 +99,8 @@ class Die //models one single dice cube
 			ellipse(myX+10,myY+40,5,5);
 			ellipse(myX+40,myY+40,5,5);	
 		}
+
+		//total
+
 	}
 }
