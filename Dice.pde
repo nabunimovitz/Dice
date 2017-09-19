@@ -9,16 +9,23 @@ int value;
 void draw()
 {
 	background(255,255,102);
+	int sum = 0;
 	for(int y =50; y<300; y+=100)
 	{
 		for(int x=50; x<300; x+=100)
 		{
 		Die one = new Die(x,y);
 		one.show();
+
+		sum = sum+one.value;
 		}
 	}
-}
 
+	fill(0);
+	textSize(20);
+	text("total = " + sum, 50, 335);
+
+}
 void mousePressed()
 {
 	redraw();
@@ -26,9 +33,7 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	
-	int myX, myY, value, sum;
-	sum=0;
-
+	int myX, myY, value;
 	Die(int x, int y) //constructor
 	{
 		myX =x;
@@ -37,6 +42,7 @@ class Die //models one single dice cube
 	}
 	void roll()
 	{
+
 		if(Math.random() < .167)
 			value = 1;
 		else if(Math.random() < .333)
@@ -49,12 +55,7 @@ class Die //models one single dice cube
 			value = 5;
 		else 
 			value = 6;
-
-		/*sum = sum+value;
-		System.out.println("sum =")*/
 			
-		System.out.println("value =" + value);
-
 	}
 	void show()
 	{
@@ -100,7 +101,6 @@ class Die //models one single dice cube
 			ellipse(myX+40,myY+40,5,5);	
 		}
 
-		//total
 
 	}
 }
